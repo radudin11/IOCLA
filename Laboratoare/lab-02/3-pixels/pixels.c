@@ -13,7 +13,26 @@
 	linia n - 1, etc.
 */
 
-void reversePic(Picture *pic);
+void reversePic(Picture *pic) {
+	int width = pic->width;
+	int height = pic->height;
+	for (int i = 0; i < width / 2; i++) {
+		for (int j = 0; j < height; j++) {
+			Pixel aux;
+			aux.B = pic->pix_array[i][j].B;
+			aux.R = pic->pix_array[i][j].R;
+			aux.G = pic->pix_array[i][j].G;
+
+			pic->pix_array[i][j].B = pic->pix_array[height - i - 1][j].B;
+			pic->pix_array[i][j].R = pic->pix_array[height - i - 1][j].R;
+			pic->pix_array[i][j].G = pic->pix_array[height - i - 1][j].G;
+
+			pic->pix_array[height - i - 1][j].B = aux.B;
+			pic->pix_array[height - i - 1][j].G = aux.G;
+			pic->pix_array[height - i - 1][j].R = aux.R;
+		}
+	}
+}
 
 /*
 	TODO b
@@ -25,7 +44,17 @@ void reversePic(Picture *pic);
 	p.b = 0.11 * p.b;
 */
 
-void colorToGray(Picture *pic);
+void colorToGray(Picture *pic) {
+	int width = pic->width;
+	int height = pic->height;
+	for (int i = 0; i < width ; i++) {
+		for (int j = 0; j < height; j++) {
+			pic->pix_array[i][j].R = 0.3 * pic->pix_array[i][j].R;
+			pic->pix_array[i][j].G = 0.59 * pic->pix_array[i][j].G;
+			pic->pix_array[i][j].B = 0.11 * pic->pix_array[i][j].B;
+		}
+	}
+}
 
 /*
 	Structura unui pixel, cea a unei imagini, precum si generarea acestora
@@ -43,6 +72,13 @@ int main() {
 	Pixel **pix_array = generatePixelArray(height, width);
 	Picture *pic = generatePicture(height, width, pix_array);
 
+	printPicture(pic);
+	reversePic(pic);
+	printf("\n\n\n");
+	printPicture(pic);
+
+	colorToGray(pic);
+	printf("\n\n\n");
 	printPicture(pic);
 
 	freePicture(&pic);

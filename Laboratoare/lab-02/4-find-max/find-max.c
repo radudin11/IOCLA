@@ -18,10 +18,12 @@
 void *find_max(void *arr, int n, int element_size,
 				int (*compare)(const void *, const void *)) {
 	void *max_elem = arr;
-
+	
 	(void) n;
 	(void) element_size;
 	(void) compare;
+	int size = sizeof(arr);
+	
 
 	return max_elem;
 }
