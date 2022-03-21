@@ -1,3 +1,6 @@
+int quantity = 42;
+int price = 0;
+
 int main(void)
 {
 	/*
@@ -7,6 +10,6 @@ int main(void)
 	 * without directly calling a printing function from an existing
 	 * library(do NOT use printf, fprintf, fwrite, ...).
 	 */
-
+	
 	return 0;
 }

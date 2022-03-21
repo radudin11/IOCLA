@@ -1,5 +1,5 @@
 #ifndef OPS_H_
-#define OPS_H_		1
+#define OPS_H_        1
 
 int add(int a, int b);
 int sub(int a, int b);
