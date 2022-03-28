@@ -1,5 +1,3 @@
-int quantity = 42;
-int price = 0;
 
 int main(void)
 {
