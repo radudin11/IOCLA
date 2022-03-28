@@ -7,9 +7,23 @@ int main(void)
 	int i;
 
 	/* TODO: Implement finding the maximum value in the vector */
-	max = v[0];
-	i = 1;
+	i = 0;
+replace:
+	max = v[i];
 
-	(void) i;
-	(void) max;
+verif:
+	if(v[i] > max) {
+		goto replace; 
+	}
+	
+	if(i > 7)
+		goto end;
+
+	i++;
+	goto verif;
+
+end:
+	printf("%d\n", max);
+	return 0;
+
 }
